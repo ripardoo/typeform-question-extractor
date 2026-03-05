@@ -15,7 +15,14 @@ export default function Header() {
           </Link>
         </h2>
 
-        <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
+        <div className="ml-auto flex items-center gap-4 sm:gap-5">
+          <Link
+            to="/"
+            className="nav-link text-sm font-medium"
+            activeProps={{ className: 'nav-link is-active text-sm font-medium' }}
+          >
+            Home
+          </Link>
           <Link
             to="/about"
             className="nav-link text-sm font-medium"

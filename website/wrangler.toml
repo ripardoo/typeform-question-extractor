@@ -1,0 +1,8 @@
+# TODO: Fill in your Cloudflare Workers configuration before first deploy.
+# See https://developers.cloudflare.com/workers/wrangler/configuration/
+
+name = "typeform-extractor-website"
+compatibility_date = "2025-01-01"
+
+# [site]
+# bucket = ".output/public"

@@ -9,3 +9,11 @@
 **.env.production.local**
 
 local_files
+
+# E2E generated state
+website/e2e/.available-urls.json
+**/e2e/.available-urls.json
+.playwright
+test-results
+playwright-report
+blob-report

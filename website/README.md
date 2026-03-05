@@ -8,7 +8,7 @@ The front-end for **Typeform Schema Extractor**. Paste any Typeform URL and inst
 - **Routing** — [TanStack Router](https://tanstack.com/router) (file-based)
 - **Styling** — [Tailwind CSS v4](https://tailwindcss.com/)
 - **Graph** — [React Flow](https://reactflow.dev/) + [Dagre](https://github.com/dagrejs/dagre) layout
-- **Testing** — [Vitest](https://vitest.dev/)
+- **Testing** — [Vitest](https://vitest.dev/) (unit), [Playwright](https://playwright.dev/) (e2e)
 
 ## Getting Started
 
@@ -28,7 +28,10 @@ The dev server starts at [http://localhost:3000](http://localhost:3000).
 | `pnpm dev`        | Start the Vite dev server      |
 | `pnpm build`      | Production build (SSR + client)|
 | `pnpm preview`    | Preview the production build   |
-| `pnpm test`       | Run tests with Vitest          |
+| `pnpm test`       | Run unit tests with Vitest      |
+| `pnpm e2e`        | Run E2E tests with Playwright  |
+| `pnpm e2e:ui`     | Run E2E tests in UI mode        |
+| `pnpm test:urls`   | Validate test-file URLs (reachability) |
 
 ## Project Structure
 
@@ -48,3 +51,19 @@ src/
 | -------- | --------------------------------------------------- |
 | `/`      | Main extractor — URL input, graph viewer, exports   |
 | `/about` | Motivation, features, and project links             |
+
+## E2E tests
+
+E2E tests use Playwright and run against the built app (preview). From the repo root:
+
+```bash
+pnpm --filter website run e2e
+```
+
+Tests use URLs listed in `test_files/urls.txt` and `test_files/embeddedUrls.txt`. Before running, **global setup** checks that each URL is reachable; tests that depend on a live Typeform (extract flow, export actions) are **skipped** when no URLs are available, so the suite can pass in environments without access to those URLs.
+
+To validate URLs without running the full e2e suite:
+
+```bash
+pnpm --filter website run test:urls
+```

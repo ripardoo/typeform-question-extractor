@@ -80,7 +80,75 @@ Run from the repository root:
 | ------ | ----------- |
 | `pnpm dev` | Start the website dev server (port 3000) |
 | `pnpm build` | Build all packages |
-| `pnpm test` | Run tests across all packages |
+| `pnpm test` | Run unit tests across all packages (Vitest) |
+| `pnpm typecheck` | Run `tsc --noEmit` across all packages |
+| `pnpm --filter website run e2e` | Run website E2E tests (Playwright) |
+
+---
+
+## Testing
+
+### Unit tests (Vitest)
+
+```bash
+pnpm test
+```
+
+Runs Vitest across all packages. The `typeform-schema-extractor` package has regression tests covering schema extraction, graph building, and all renderers. The website package excludes its `e2e/` directory from Vitest so the two test runners don't conflict.
+
+### E2E tests (Playwright)
+
+```bash
+pnpm --filter website run e2e        # headless
+pnpm --filter website run e2e:ui     # interactive UI mode
+```
+
+E2E tests verify the website against a production build (Vite preview on port 5180). They are split into three spec files that run **in parallel** across multiple Playwright workers:
+
+| Spec file | Tests | What it covers |
+| --------- | :---: | -------------- |
+| `smoke.spec.ts` | 9 | Page loads, routing, form validation, navigation, theme toggle |
+| `extract.spec.ts` | 2 | Loading state and full extraction flow (fields table, sections, export area) |
+| `export.spec.ts` | 5 | Markdown/Mermaid copy & download, SVG copy (serial block — extracts once, reuses the page) |
+
+**URL validation gate** — Before tests run, a global setup step checks that the Typeform URLs in `test_files/urls.txt` and `test_files/embeddedUrls.txt` are reachable. Tests that depend on a live Typeform are automatically **skipped** when no URLs are available, so the suite passes cleanly in offline or restricted environments.
+
+To validate URLs independently:
+
+```bash
+pnpm --filter website run test:urls
+```
+
+---
+
+## CI/CD
+
+A single GitHub Actions workflow (`.github/workflows/ci.yml`) handles everything:
+
+```
+push / PR to master ──┬── Typecheck (tsc --noEmit)
+                      ├── Unit tests (Vitest)
+                      └── E2E tests (Playwright)
+                                │
+                          all pass + master push
+                                │
+                                ▼
+                        Deploy website (Cloudflare Workers)
+
+tag push v* ──────────▶ Publish to npm
+```
+
+- **Typecheck, unit tests, and e2e** run in parallel on every push and PR.
+- **Deploy** runs only on master after all three jobs pass. Uses `cloudflare/wrangler-action` with `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets.
+- **npm publish** triggers independently on version tags (e.g. `git tag v1.0.0 && git push --tags`). A safety check verifies the tag matches `package.json` version before publishing. Requires an `NPM_TOKEN` secret.
+
+### Required repository secrets
+
+| Secret | Used by |
+| ------ | ------- |
+| `NPM_TOKEN` | `publish-npm` job |
+| `CLOUDFLARE_API_TOKEN` | `deploy-website` job |
+| `CLOUDFLARE_ACCOUNT_ID` | `deploy-website` job |
 
 ---
 
@@ -93,7 +161,11 @@ Run from the repository root:
 | Web framework | TanStack Start + TanStack Router |
 | UI | React 19, Tailwind CSS v4 |
 | Graph rendering | React Flow, Dagre |
-| Testing | Vitest |
+| Unit testing | Vitest |
+| E2E testing | Playwright (Chromium) |
+| CI/CD | GitHub Actions |
+| Hosting | Cloudflare Workers |
+| Package registry | npm |
 
 ---
 
@@ -112,17 +184,26 @@ Run from the repository root:
 
 ```
 typeform-question-extractor/
+├── .github/workflows/
+│   └── ci.yml                   # Unified CI/CD pipeline
 ├── typeform-schema-extractor/   # npm package
 │   └── src/
 │       ├── extractor.ts         # HTML fetch & JSON parsing
 │       ├── graph.ts             # Schema → directed graph
 │       ├── types.ts             # TypeScript type definitions
-│       └── renderers/           # Markdown, Mermaid, React Flow
+│       ├── renderers/           # Markdown, Mermaid, React Flow
+│       └── __tests__/           # Vitest regression tests
 ├── website/                     # Web app
-│   └── src/
-│       ├── routes/              # / (extractor) and /about
-│       ├── components/          # Header, Footer, FormGraphViewer, …
-│       └── lib/                 # Server functions
+│   ├── src/
+│   │   ├── routes/              # / (extractor) and /about
+│   │   ├── components/          # Header, Footer, FormGraphViewer, …
+│   │   └── lib/                 # Server functions
+│   ├── e2e/                     # Playwright E2E tests
+│   │   ├── smoke.spec.ts        # Routing, validation, navigation
+│   │   ├── extract.spec.ts      # Extraction flow
+│   │   └── export.spec.ts       # Export actions (serial)
+│   └── wrangler.toml            # Cloudflare Workers config
+├── test_files/                  # Shared test data (URLs, HTML fixtures)
 ├── package.json                 # Workspace root
 └── pnpm-workspace.yaml
 ```
