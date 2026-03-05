@@ -1,7 +1,33 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Package, Github, Heart, ExternalLink } from 'lucide-react'
+import { Package, Github, Heart, ExternalLink, AlertTriangle } from 'lucide-react'
 
-export const Route = createFileRoute('/about')({ component: About })
+export const Route = createFileRoute('/about')({
+  component: About,
+  head: () => ({
+    meta: [
+      { title: 'About — How to Extract and View All Typeform Questions | Typeform Schema Extractor' },
+      {
+        name: 'description',
+        content:
+          'Learn how this open-source tool extracts every question and logic branch from any Typeform so you can prepare answers, audit branching, and export the full structure.',
+      },
+      { property: 'og:title', content: 'About — How to Extract and View All Typeform Questions' },
+      {
+        property: 'og:description',
+        content:
+          'Learn how this open-source tool extracts every question and logic branch from any Typeform so you can prepare answers, audit branching, and export the full structure.',
+      },
+      { property: 'og:url', content: 'https://gettypeformquestions.com/about' },
+      { name: 'twitter:title', content: 'About — How to Extract and View All Typeform Questions' },
+      {
+        name: 'twitter:description',
+        content:
+          'Learn how this open-source tool extracts every question and logic branch from any Typeform so you can prepare answers, audit branching, and export the full structure.',
+      },
+    ],
+    links: [{ rel: 'canonical', href: 'https://gettypeformquestions.com/about' }],
+  }),
+})
 
 function About() {
   return (
@@ -19,7 +45,7 @@ function About() {
       </section>
 
       <section className="island-shell mt-8 rounded-2xl p-6 sm:p-10">
-        <p className="island-kicker mb-4">Motivation</p>
+        <h2 className="island-kicker mb-4">Motivation</h2>
         <div className="max-w-3xl space-y-4 text-base leading-relaxed text-[var(--sea-ink)]">
           <p>
             It all started with a program application that used Typeform. Typeform has a beautiful,
@@ -47,7 +73,7 @@ function About() {
       </section>
 
       <section className="island-shell mt-8 rounded-2xl p-6 sm:p-10">
-        <p className="island-kicker mb-4">What it does</p>
+        <h2 className="island-kicker mb-4">What it does</h2>
         <div className="grid gap-4 sm:grid-cols-3">
           <FeatureCard
             title="Extract"
@@ -71,21 +97,28 @@ function About() {
               <Package className="h-5 w-5 text-[var(--lagoon-deep)]" />
             </div>
             <div>
-              <p className="island-kicker mb-0">npm Package</p>
+              <h2 className="island-kicker mb-0">npm Package</h2>
             </div>
           </div>
           <p className="mb-4 text-sm text-[var(--sea-ink-soft)]">
             The extraction and rendering logic is available as a standalone npm package you can use
             in your own projects.
           </p>
+          <div className="mb-4 flex items-start gap-3 rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-3">
+            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400" />
+            <p className="m-0 text-sm text-amber-800 dark:text-amber-200">
+              The npm package is not yet published. Check back in a couple of days.
+            </p>
+          </div>
           <div className="overflow-x-auto rounded-xl border border-[var(--line)] bg-[var(--foam)] px-4 py-3">
             <code className="border-0 bg-transparent p-0 text-sm text-[var(--sea-ink)]">
               npm install typeform-extractor
             </code>
           </div>
-          {/* TODO: replace with actual npm URL once published */}
           <a
-            href="#"
+            href="https://www.npmjs.com/package/typeform-extractor"
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--lagoon-deep)] no-underline hover:text-[var(--link-hover)]"
           >
             View on npm <ExternalLink className="h-3.5 w-3.5" />
@@ -98,15 +131,16 @@ function About() {
               <Github className="h-5 w-5 text-[var(--lagoon-deep)]" />
             </div>
             <div>
-              <p className="island-kicker mb-0">GitHub Repository</p>
+              <h2 className="island-kicker mb-0">GitHub Repository</h2>
             </div>
           </div>
           <p className="mb-4 text-sm text-[var(--sea-ink-soft)]">
             The entire project is open source. Browse the code, open issues, or contribute.
           </p>
-          {/* TODO: replace with actual GitHub repo URL */}
           <a
-            href="#"
+            href="https://github.com/ripardoo/typeform-question-extractor"
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--lagoon-deep)] no-underline hover:text-[var(--link-hover)]"
           >
             View on GitHub <ExternalLink className="h-3.5 w-3.5" />
@@ -120,7 +154,7 @@ function About() {
             <Heart className="h-5 w-5 text-[var(--lagoon-deep)]" />
           </div>
           <div>
-            <p className="island-kicker mb-2">Open Source</p>
+            <h2 className="island-kicker mb-2">Open Source</h2>
             <p className="max-w-2xl text-base leading-relaxed text-[var(--sea-ink)]">
               This project is free and open source. If you find it useful, consider starring the
               repository, sharing it with others, or contributing back. Bug reports, feature

@@ -9,9 +9,86 @@ import CopyButton from '../components/CopyButton'
 
 const FormGraphViewer = lazy(() => import('../components/FormGraphViewer'))
 import { useToast } from '../context/ToastContext'
-import { Download, Copy, GitBranch, Image } from 'lucide-react'
+import { Download, Copy, GitBranch, Image, ClipboardList, Eye, FileDown, Workflow } from 'lucide-react'
 
-export const Route = createFileRoute('/')({ component: App })
+const FAQ_ITEMS = [
+  {
+    question: 'How do I get all questions from a Typeform?',
+    answer:
+      'Paste the Typeform URL into the extractor above. It fetches the embedded schema and shows every question, logic branch, and condition at once — no need to click through the form one question at a time.',
+  },
+  {
+    question: 'Can I see Typeform questions without filling out the form?',
+    answer:
+      'Yes. This tool extracts the complete structure from any public Typeform URL without requiring you to submit or interact with the form. You get the full list of questions instantly.',
+  },
+  {
+    question: 'How do I export Typeform questions to Markdown?',
+    answer:
+      'After extracting, click the "Copy" or "Download" button under the fields table to get a Markdown table of all questions with their types and answer choices.',
+  },
+  {
+    question: 'Does this work with conditional logic and branching?',
+    answer:
+      'Yes. The extractor parses all logic jumps and conditions in the Typeform, displaying them as labeled edges in the interactive flow graph so you can see every possible path.',
+  },
+  {
+    question: 'What export formats are available?',
+    answer:
+      'You can export the form structure as a Markdown table (for drafting answers), a Mermaid flowchart (for documentation and Notion), or a rendered SVG image (for presentations and embedding).',
+  },
+] as const
+
+const FAQ_JSONLD = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+})
+
+const WEBAPP_JSONLD = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Typeform Schema Extractor',
+  url: 'https://gettypeformquestions.com',
+  description:
+    'Extract and visualize the complete structure of any Typeform. See every question, logic branch, and condition at once, then export as Markdown, Mermaid, or SVG.',
+  applicationCategory: 'Utility',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  author: { '@type': 'Person', name: 'Roope Ripatti', url: 'https://x.com/RoopeRipatti' },
+})
+
+export const Route = createFileRoute('/')({
+  component: App,
+  head: () => ({
+    meta: [
+      { title: 'Get All Questions from a Typeform — Typeform Schema Extractor' },
+      {
+        name: 'description',
+        content:
+          'See every question, logic branch, and condition in any Typeform at once. Paste a URL to extract the full form structure and export as Markdown, Mermaid, or SVG.',
+      },
+      { property: 'og:title', content: 'Get All Questions from a Typeform — Typeform Schema Extractor' },
+      {
+        property: 'og:description',
+        content:
+          'See every question, logic branch, and condition in any Typeform at once. Paste a URL to extract the full form structure and export as Markdown, Mermaid, or SVG.',
+      },
+      { property: 'og:url', content: 'https://gettypeformquestions.com/' },
+      { name: 'twitter:title', content: 'Get All Questions from a Typeform — Typeform Schema Extractor' },
+      {
+        name: 'twitter:description',
+        content:
+          'See every question, logic branch, and condition in any Typeform at once. Paste a URL to extract the full form structure and export as Markdown, Mermaid, or SVG.',
+      },
+    ],
+    links: [{ rel: 'canonical', href: 'https://gettypeformquestions.com/' }],
+  }),
+})
 
 function downloadBlob(content: string, filename: string, mimeType: string) {
   const blob = new Blob([content], { type: mimeType })
@@ -130,16 +207,25 @@ function App() {
 
   return (
     <div className="page-wrap px-4 pb-8 pt-14">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: WEBAPP_JSONLD }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: FAQ_JSONLD }}
+      />
+
       <section className="island-shell rise-in relative overflow-hidden rounded-[2rem] px-6 py-10 sm:px-10 sm:py-14">
         <div className="pointer-events-none absolute -left-20 -top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(79,184,178,0.32),transparent_66%)]" />
         <div className="pointer-events-none absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(47,106,74,0.18),transparent_66%)]" />
         <p className="island-kicker mb-3">Typeform Schema Extractor</p>
         <h1 className="display-title mb-5 max-w-3xl text-4xl leading-[1.02] font-bold tracking-tight text-[var(--sea-ink)] sm:text-6xl">
-          Extract and visualize your Typeform structure
+          Get all questions from any Typeform
         </h1>
         <p className="mb-8 max-w-2xl text-base text-[var(--sea-ink-soft)] sm:text-lg">
-          Paste a Typeform URL or a page with an embedded Typeform to see an interactive flow and
-          export the form as a Markdown table, Mermaid chart, or SVG.
+          Paste a Typeform URL to instantly see every question, logic branch, and condition at once.
+          Export the full form structure as a Markdown table, Mermaid flowchart, or SVG.
         </p>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -170,6 +256,48 @@ function App() {
         )}
       </section>
 
+      {!schema && (
+        <>
+          <section className="island-shell mt-8 rounded-2xl p-6 sm:p-10">
+            <h2 className="island-kicker mb-6">How it works</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <HowItWorksCard
+                icon={<ClipboardList className="h-5 w-5 text-[var(--lagoon-deep)]" />}
+                title="1. Paste a Typeform URL"
+                description="Enter any public Typeform link or a page with an embedded Typeform. Direct Typeform URLs and embedded forms are both supported."
+              />
+              <HowItWorksCard
+                icon={<Eye className="h-5 w-5 text-[var(--lagoon-deep)]" />}
+                title="2. View all questions at once"
+                description="The tool extracts the full form schema and displays every question, field type, and answer choice in a single view — no more clicking through one at a time."
+              />
+              <HowItWorksCard
+                icon={<Workflow className="h-5 w-5 text-[var(--lagoon-deep)]" />}
+                title="3. Explore logic branches"
+                description="See conditional jumps and branching logic as an interactive flow graph. Understand every possible path through the form."
+              />
+              <HowItWorksCard
+                icon={<FileDown className="h-5 w-5 text-[var(--lagoon-deep)]" />}
+                title="4. Export the structure"
+                description="Copy or download the form as a Markdown table to draft answers, a Mermaid flowchart for docs, or an SVG for presentations."
+              />
+            </div>
+          </section>
+
+          <section className="island-shell mt-8 rounded-2xl p-6 sm:p-10">
+            <h2 className="island-kicker mb-6">Frequently asked questions</h2>
+            <dl className="max-w-3xl space-y-6">
+              {FAQ_ITEMS.map((item) => (
+                <div key={item.question}>
+                  <dt className="mb-1 text-base font-semibold text-[var(--sea-ink)]">{item.question}</dt>
+                  <dd className="m-0 text-sm leading-relaxed text-[var(--sea-ink-soft)]">{item.answer}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        </>
+      )}
+
       {graphError && (
         <section className="island-shell mt-8 rounded-2xl border border-red-200 bg-red-50 p-6 dark:border-red-800/40 dark:bg-red-950/20">
           <p className="mb-1 text-sm font-semibold text-red-700 dark:text-red-400">Could not build form graph</p>
@@ -181,7 +309,7 @@ function App() {
         <>
           {graph && (
             <section className="island-shell mt-8 overflow-hidden rounded-2xl">
-              <p className="island-kicker mb-2 px-6 pt-6">Form flow</p>
+              <h2 className="island-kicker mb-2 px-6 pt-6">Interactive form flow</h2>
               <div className="h-[500px] w-full px-2 pb-4">
                 <Suspense fallback={<div className="flex h-full items-center justify-center text-sm text-[var(--sea-ink-soft)]">Loading graph…</div>}>
                   <FormGraphViewer graph={graph} className="h-full w-full rounded-lg" />
@@ -192,7 +320,7 @@ function App() {
 
           {markdownTable && (
             <section className="island-shell mt-8 overflow-hidden rounded-2xl p-6">
-              <p className="island-kicker mb-4">Fields table</p>
+              <h2 className="island-kicker mb-4">All form fields</h2>
               <div className="markdown-table-wrap overflow-x-auto rounded-xl border border-[var(--line)] bg-[var(--surface-strong)] p-4">
                 <div className="prose prose-sm max-w-none prose-table:border-collapse prose-th:border prose-th:border-[var(--line)] prose-th:bg-[var(--foam)] prose-th:px-3 prose-th:py-2 prose-th:text-left prose-td:border prose-td:border-[var(--line)] prose-td:px-3 prose-td:py-2 prose-th:text-[var(--sea-ink)] prose-td:text-[var(--sea-ink)] dark:prose-invert">
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
@@ -218,7 +346,7 @@ function App() {
 
           {graph && (
             <section className="island-shell mt-8 rounded-2xl p-6">
-              <p className="island-kicker mb-4">Export</p>
+              <h2 className="island-kicker mb-4">Export options</h2>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="rounded-xl border border-[var(--line)] bg-[var(--foam)]/50 p-4">
                   <div className="mb-3 flex items-center gap-2">
@@ -270,6 +398,18 @@ function App() {
           )}
         </>
       )}
+    </div>
+  )
+}
+
+function HowItWorksCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
+  return (
+    <div className="feature-card rounded-xl border border-[var(--line)] p-5 transition-all">
+      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--chip-line)] bg-[var(--foam)]">
+        {icon}
+      </div>
+      <h3 className="mb-2 text-base font-semibold text-[var(--sea-ink)]">{title}</h3>
+      <p className="m-0 text-sm leading-relaxed text-[var(--sea-ink-soft)]">{description}</p>
     </div>
   )
 }

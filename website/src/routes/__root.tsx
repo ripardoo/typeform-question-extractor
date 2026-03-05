@@ -13,44 +13,28 @@ export const Route = createRootRoute({
   notFoundComponent: NotFound,
   head: () => ({
     meta: [
-      {
-        charSet: 'utf-8',
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        title: 'Typeform Schema Extractor',
-      },
+      { charSet: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { title: 'Typeform Schema Extractor' },
       {
         name: 'description',
         content:
           'Extract and visualize your Typeform structure. See every question, branch, and condition at a glance, then export as Markdown, Mermaid, or SVG.',
       },
-      {
-        property: 'og:title',
-        content: 'Typeform Schema Extractor',
-      },
-      {
-        property: 'og:description',
-        content:
-          'Extract and visualize your Typeform structure. See every question, branch, and condition at a glance, then export as Markdown, Mermaid, or SVG.',
-      },
-      {
-        property: 'og:type',
-        content: 'website',
-      },
-      {
-        property: 'og:url',
-        content: 'https://gettypeformquestions.com',
-      },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Typeform Schema Extractor' },
+      { property: 'og:url', content: 'https://gettypeformquestions.com' },
+      { property: 'og:image', content: 'https://gettypeformquestions.com/og-image.png' },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+      { property: 'og:image:alt', content: 'Typeform Schema Extractor — get all questions from any Typeform at once' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: '@RoopeRipatti' },
+      { name: 'twitter:image', content: 'https://gettypeformquestions.com/og-image.png' },
     ],
     links: [
-      {
-        rel: 'stylesheet',
-        href: appCss,
-      },
+      { rel: 'stylesheet', href: appCss },
+      { rel: 'canonical', href: 'https://gettypeformquestions.com' },
     ],
   }),
   shellComponent: RootDocument,
