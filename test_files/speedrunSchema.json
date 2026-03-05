@@ -1,0 +1,914 @@
+{
+  "id": "S8YdZgSi",
+  "type": "quiz",
+  "title": "Speedrun Alpha Application - edited by tonik®",
+  "workspace": {
+    "href": "https://api.typeform.com/workspaces/ekbXyk"
+  },
+  "theme": {
+    "id": "SXs7Z79t",
+    "font": "Geist",
+    "name": "alpha theme 01",
+    "created_at": "2026-01-26T16:07:00.772231Z",
+    "updated_at": "2026-01-29T17:43:32.834791Z",
+    "has_transparent_button": false,
+    "colors": {
+      "question": "#FFFFFF",
+      "answer": "#FFFFFF",
+      "button": "#F73900",
+      "button_content": "#000000",
+      "background": "#0f0f0f"
+    },
+    "visibility": "private",
+    "background": {
+      "brightness": -0.8,
+      "layout": "fullscreen",
+      "href": "https://images.typeform.com/images/qmJWJBHnUCDf"
+    },
+    "screens": {
+      "font_size": "small",
+      "alignment": "left"
+    },
+    "fields": {
+      "font_size": "small",
+      "alignment": "left"
+    },
+    "rounded_corners": "small"
+  },
+  "settings": {
+    "language": "en",
+    "progress_bar": "proportion",
+    "meta": {
+      "allow_indexing": false
+    },
+    "hide_navigation": false,
+    "is_public": true,
+    "is_trial": false,
+    "show_progress_bar": true,
+    "show_typeform_branding": false,
+    "are_uploads_public": false,
+    "show_time_to_complete": true,
+    "show_number_of_submissions": false,
+    "show_cookie_consent": false,
+    "show_question_number": true,
+    "show_key_hint_on_choices": true,
+    "autosave_progress": true,
+    "free_form_navigation": false,
+    "use_lead_qualification": false,
+    "pro_subdomain_enabled": false,
+    "milestones": [
+      {
+        "field_ref": "e6137ff3-7436-4ac9-a898-08d0de37a69b",
+        "status": "active"
+      }
+    ],
+    "auto_translate": true,
+    "partial_responses_to_all_integrations": true
+  },
+  "thankyou_screens": [
+    {
+      "id": "mK5vAE3ZwTbE",
+      "ref": "c5362d62-23da-4b14-b338-2e79ba770efd",
+      "title": "Thanks for submitting! Team will be in touch shortly with next steps.",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": false,
+        "share_icons": false,
+        "button_mode": "default_redirect",
+        "button_text": "again"
+      }
+    },
+    {
+      "id": "DefaultTyScreen",
+      "ref": "default_tys",
+      "title": "All done! Thanks for your time.",
+      "type": "thankyou_screen",
+      "properties": {
+        "show_button": false,
+        "share_icons": false
+      }
+    }
+  ],
+  "fields": [
+    {
+      "id": "vq5Zcb8NVPdj",
+      "title": "Email address",
+      "ref": "c45f2f8d-ed72-48a1-b580-584e04a24374",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "email"
+    },
+    {
+      "id": "9wzn9Q4NtoaE",
+      "title": "LinkedIn profile URL",
+      "ref": "e6137ff3-7436-4ac9-a898-08d0de37a69b",
+      "properties": {},
+      "validations": {
+        "required": true
+      },
+      "type": "website"
+    },
+    {
+      "id": "f7cxPDiV5ytd",
+      "title": "Full name",
+      "ref": "9fb5c4ed-3881-4c38-acb2-a2a4c8c8c119",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "g2ZtRhDzrjt5",
+      "title": "Link to GitHub (or personal website)",
+      "ref": "10163553-e217-497f-b467-f7cc7f0df217",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "B9o5BMOj9F0j",
+      "title": "Location (City, Country)",
+      "ref": "907bb103-d7c0-43a7-afac-2d496ac82355",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "w0MXMvWBCFtm",
+      "title": "Are you legally authorized to work in the U.S.?",
+      "ref": "15fc8957-ebef-448a-ae55-10ad302895fd",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "m4daA8C0bivg",
+            "ref": "265a522d-c3ea-4f96-b027-703181b019ac",
+            "label": "Yes"
+          },
+          {
+            "id": "JBZ8A26rPtAm",
+            "ref": "129f5b09-a27e-4a99-aeda-e8da286efca6",
+            "label": "No"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "nVyrW6TXf6jj",
+      "title": "Can you provide any details about your circumstances?\n",
+      "ref": "b030df55-7911-4565-b25f-9ab0faf075e6",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "dk4hTpeaOCeZ",
+      "title": "Will you require visa sponsorship in the future?",
+      "ref": "3bd17ff6-ecff-491e-a869-e8dcb290d9cb",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "PeYClJMoRPsh",
+            "ref": "9b75fd19-46ea-4ba6-a2a1-b492db5d5b9b",
+            "label": "Yes"
+          },
+          {
+            "id": "3LYYDDFC7BSM",
+            "ref": "7693631b-1044-47e3-a58f-a22aa6a0eac9",
+            "label": "No"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "gcFpWAa2V5zF",
+      "title": "Can you share specifics about your visa needs?\n",
+      "ref": "a9a0f8da-2721-4db7-961d-17dc0e60a59a",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "kA9Tx25YAKR8",
+      "title": "Date of birth",
+      "ref": "2bde7632-25c0-4ad7-88f1-44fa00cf9971",
+      "properties": {
+        "description": "This program is designed for folks aged 18–25. We just want to confirm you’re within that range.",
+        "separator": "/",
+        "structure": "MMDDYYYY"
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "date"
+    },
+    {
+      "id": "o4LWezsHAO1L",
+      "title": "Which locations are you willing to work on-site in?",
+      "ref": "201417ad-65e4-4a25-8691-7dcf462d915e",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": true,
+        "allow_other_choice": true,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "mUCsfmH6xwp0",
+            "ref": "49ce7deb-8a1b-45df-96a7-5d590699a8cd",
+            "label": "San Francisco"
+          },
+          {
+            "id": "yr2xsPDYlszf",
+            "ref": "aab2165d-d06d-4d14-b221-bea6373e694e",
+            "label": "New York"
+          },
+          {
+            "id": "k8wagHjt7Vca",
+            "ref": "cd01d3b8-f607-4b5b-b072-f17430c8e927",
+            "label": "Los Angeles"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "A4j9XAPqt5JE",
+      "title": "Highest level of education completed or in progress",
+      "ref": "e0e24c2c-fe93-4782-ba5a-cc625a03ab36",
+      "properties": {
+        "randomize": false,
+        "alphabetical_order": false,
+        "choices": [
+          {
+            "id": "4l2aJjaykCa7",
+            "ref": "0ce3e63b-1d14-4bcb-b59d-cdc2b1f6226b",
+            "label": "High school"
+          },
+          {
+            "id": "bWDYfmZltRHQ",
+            "ref": "75b3a98d-7615-45fc-8d17-8a79cb860662",
+            "label": "University"
+          },
+          {
+            "id": "iKBuODYAkpRP",
+            "ref": "bd2fdbc1-cb57-4eff-af93-56e65900dec0",
+            "label": "Master’s"
+          },
+          {
+            "id": "as4LhwupytvU",
+            "ref": "e8c56243-1f70-4273-8763-1953ebd523a0",
+            "label": "PhD"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "dropdown"
+    },
+    {
+      "id": "b64yxvUTO3q9",
+      "title": "Name of current school (or most recent) \\*",
+      "ref": "f90ee73c-630b-4da7-bbda-be2319924cd6",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "wgpHheWHTdC2",
+      "title": "Degree(s) (pursuing or graduated)",
+      "ref": "75f8681d-d517-4f80-9115-5d327c2b7d04",
+      "properties": {
+        "description": "e.g., B.S. Computer Science"
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "NcRDHwU5Z0h1",
+      "title": "Graduation year (actual or expected)",
+      "ref": "f889c148-a1e8-4983-96cb-81a63f9c3d8e",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "qmcQcKepAWw6",
+      "title": "GPA",
+      "ref": "3d081957-ec53-4b3a-8058-9f2c3fefce3b",
+      "properties": {
+        "description": "e.g., 3.8/4.0"
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "LcgP4m5qlQf0",
+      "title": "Standardized test scores (SAT / ACT / JEE / etc.)",
+      "ref": "e7b4a473-53a8-4bfa-951b-df924637efb2",
+      "properties": {
+        "description": "There are many types of standardized tests. Feel free to include anything you think is relevant."
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "l6dkd0BcmLQg",
+      "title": "Current employer and role",
+      "ref": "f8ec4627-7ea0-4c40-9ef7-dd05bb1e8279",
+      "properties": {
+        "description": "List N/A if not currently employed."
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "short_text"
+    },
+    {
+      "id": "OcefnAne8OTn",
+      "title": "Upload your resume (PDF)",
+      "ref": "418bd481-d4e7-4ef5-94de-96f9ea6ecd88",
+      "properties": {
+        "description": "(optional) "
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "file_upload"
+    },
+    {
+      "id": "QBK35mhemb3h",
+      "title": "Technical areas you have experience in",
+      "ref": "4ccff41a-ff1b-4be4-b449-c5febdf821f4",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": true,
+        "allow_other_choice": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "kxNieEMK3tps",
+            "ref": "a6a390e6-f3c9-40a1-b574-9d255b838115",
+            "label": "Frontend"
+          },
+          {
+            "id": "xnCY6i9A6Q3U",
+            "ref": "e7ee2558-8064-4086-8e24-92a7aa144aa4",
+            "label": "Backend"
+          },
+          {
+            "id": "ukk6rGSsgOUH",
+            "ref": "e466d07d-b2ac-4155-a454-54e2edfe54dc",
+            "label": "Full-stack"
+          },
+          {
+            "id": "ZiFilAi2Nt52",
+            "ref": "77175993-9ffe-4bda-82da-28386724f9be",
+            "label": "Mobile"
+          },
+          {
+            "id": "CzRlJzkDK1pw",
+            "ref": "28fa5b34-9f73-4c1b-9517-cbf9f0554f31",
+            "label": "AI / ML"
+          },
+          {
+            "id": "58gVR84tc1Kz",
+            "ref": "321c868e-e6a0-41a1-8b64-82c387326c3b",
+            "label": "Systems / infra / DevOps"
+          },
+          {
+            "id": "Mm0XQhETTMrN",
+            "ref": "3845bea0-d436-4c5b-9211-a60cd60fa8f3",
+            "label": "Design systems / UX"
+          },
+          {
+            "id": "sRPhXba2ASbG",
+            "ref": "0b7a4bf5-0c23-4644-b6c8-7b8fb91942d3",
+            "label": "Robotics"
+          },
+          {
+            "id": "MMd4nT7s08As",
+            "ref": "d563f074-9172-4fd0-bafa-915e3c825daa",
+            "label": "Computer vision"
+          },
+          {
+            "id": "P11DqfF0gJBc",
+            "ref": "15364d66-00e7-4e91-bb06-5b3ea24142ec",
+            "label": "Networking"
+          },
+          {
+            "id": "XAW5qgjbNSQY",
+            "ref": "4da3cf9f-e914-43c1-94a1-29ea8cbcbca3",
+            "label": "Compilers"
+          },
+          {
+            "id": "GHobjdLfZrhq",
+            "ref": "1fcf05dd-4ad4-49ce-a6a6-80eafaa7173d",
+            "label": "Graphics"
+          },
+          {
+            "id": "HX95kZPCo6Tb",
+            "ref": "02b7eb51-7452-4bf9-b8da-9fd1a2e75251",
+            "label": "GPU optimization"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "Nr06Bt2JYeM7",
+      "title": "What are your greatest accomplishments?",
+      "ref": "321f6bda-182a-4a17-ad22-51a344bf8ff8",
+      "properties": {
+        "description": "We want to get a sense of what you’re most proud of. This could include things like competitive programming results, research or publications, high-level competition (e.g. chess, math, music), meaningful side projects, leadership in communities, or other experiences that you feel make you remarkable. "
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "8R2faiAuwede",
+      "title": "Tell us about the most difficult challenge (technical or non-technical) you took on that you’re proud of. What made it hard, and how did you work through it?",
+      "ref": "267976e6-518c-4b11-9d57-581c5da1887b",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "Ncsmh7oXRWqB",
+      "title": "What have you built from zero to one?",
+      "ref": "231d1a85-67c0-4f48-9805-ead6ac5ca0f0",
+      "properties": {
+        "description": "Share up to 2–3 links (apps, repos, demos, or videos). For each, briefly describe what you built, why you built it, your role, and the outcome or impact. Include usage, traction, or metrics where relevant."
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "gzW81fZQPp3d",
+      "title": "What’s the most complex technical concept you’ve learned outside of school or work?",
+      "ref": "9c22d8b1-35be-4f9b-9bb1-11895fb2dcf0",
+      "properties": {
+        "description": "We want to know what you’re passionate about and what you do when no one’s telling you what to do."
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "8eW4LIB7RZdy",
+      "title": "Which path are you most interested in? You may select more than one. If you’re interested in both, we’ll help determine the best fit later in the process.\n",
+      "ref": "0fb75d1f-4636-48e8-8104-dfc6136102c0",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": true,
+        "allow_other_choice": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "LrS5aZBVcB8j",
+            "ref": "239f8033-fc38-4195-b8ee-35b679306f0b",
+            "label": "Join a Startup"
+          },
+          {
+            "id": "ldQxW6HFVzDt",
+            "ref": "8cac077b-ab2c-4c48-97ae-349a8d5edb84",
+            "label": "Founder Track"
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "e0SuMZIjRDIf",
+      "title": "Are you willing to accept a full-time role if selected as a finalist + match with a portfolio company? Joining a startup requires full-time commitment, and want to make sure that aligns with what you’re looking for.",
+      "ref": "a48b891e-a14e-45cc-9269-e0fb02e6d10a",
+      "properties": {
+        "description": "This is a full-time program, and want to make sure that aligns with what you’re looking for.",
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "i22tJA9xtI2T",
+            "ref": "7c1c1445-e860-4181-b754-55545a125c36",
+            "label": "Yes"
+          },
+          {
+            "id": "HbtSYDqUDVBD",
+            "ref": "2a64d91c-c05e-45b0-9b3c-632506a67dde",
+            "label": "No"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "neUdmCnKLHqp",
+      "title": "If you are a student, would you be willing to take time off from school to join a company full-time if matched? \\*\n",
+      "ref": "bc77c682-b1ac-4751-ac95-c09284919974",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "9Bj91483Zbnj",
+            "ref": "d62ca75a-c386-46ac-a871-4419abcdb897",
+            "label": "Yes"
+          },
+          {
+            "id": "2y8eB0tYcSJF",
+            "ref": "ba785d34-0152-4075-839b-b450b5d3c453",
+            "label": "No"
+          },
+          {
+            "id": "LbfU7WidUU3F",
+            "ref": "1223b691-42ec-4bcb-808d-ce823ff77803",
+            "label": "N/A – I’m not a student"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "KvHp3PjKP9nr",
+      "title": "Preferred start date for full-time work",
+      "ref": "73b84331-7d13-4f85-b03b-bd93385898dd",
+      "properties": {
+        "description": "You don’t need to be specific, just a general sense of timing. We’re aiming for start dates before mid-June.",
+        "separator": "/",
+        "structure": "MMDDYYYY"
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "date"
+    },
+    {
+      "id": "sXgPWhe29cnQ",
+      "title": "Why do you want to work at a startup instead of a large company?",
+      "ref": "7c32ffca-b7b0-4f55-ae32-e2a311ea53fa",
+      "properties": {},
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "tnMjQb5kl4OP",
+      "title": "Startups may not maximize short-term compensation compared to large tech companies. Do you still want to apply with this understanding?",
+      "ref": "edd58608-2d7e-4a95-8994-23cc02efeaec",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "NQsOAio30ntv",
+            "ref": "5117f6b4-d41b-4fd1-b5cc-8b2627d1cbdf",
+            "label": "Yes"
+          },
+          {
+            "id": "4Mw2cKVW8rFO",
+            "ref": "2f603abd-4fc0-47f8-8472-a9f4cfedbaaa",
+            "label": "No"
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "XuulZZYOqgpG",
+      "title": "Which startup stages are you most interested in?",
+      "ref": "51e0def4-5235-46ed-8112-9e5d4ca85f29",
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": true,
+        "allow_other_choice": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "i1TlYbwoBl8B",
+            "ref": "8b3c1199-429c-4965-9ad4-c9cd115786bf",
+            "label": "*Pre-Seed / Idea Stage. *Typically fewer than 10 employees. Product may change week to week. Very little structure, often <18 months of runway. High risk, high learning velocity."
+          },
+          {
+            "id": "949wML4tFmp7",
+            "ref": "a36f2324-53ec-4c19-99b6-a815ea72b1a5",
+            "label": "*Seed Stage.* Team usually 10-25. First product in market or about to launch. Heavy iteration on customer feedback. Still scrappy, with modest funding (~12-24 months runway). Lots of hands-on responsibility."
+          },
+          {
+            "id": "q0CkZIPV6kJJ",
+            "ref": "f02c715a-bd46-4e86-b860-1df1ab7b4091",
+            "label": "*Series A.* Team 25-75. Clearer product-market fit emerging. More defined roles but still startup pace. Company building repeatable go-to-market motion. Funding gives 18-24 months runway, growth expectations are high."
+          },
+          {
+            "id": "MpgmaBwppmpd",
+            "ref": "fa765885-2752-4a58-92aa-660b3372f5af",
+            "label": "*Series B*. Team 75-200. Product and GTM motion scaling, company building leadership layers and specialized teams. Faster headcount growth, more defined processes, stronger financial footing but still significant risk."
+          },
+          {
+            "id": "dEcJXehAyY9C",
+            "ref": "30241603-12b4-493a-bbcb-27677c010e32",
+            "label": "*Series C+ / Growth Stage. *Team 200+. Company scaling aggressively across functions and geographies. More stability and resources, but still pre-IPO startup culture. Roles are narrower, but exposure to growth at scale is huge."
+          }
+        ]
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "multiple_choice"
+    },
+    {
+      "id": "2gRHH4Rxy60P",
+      "title": "If you were to start a company, what would you want to explore? If you have a specific idea, tell us about it. If not, what types of problems are you most interested in? ",
+      "ref": "f7f24c77-dd63-4623-a539-f94c5761a559",
+      "properties": {
+        "description": "If you’ve already started working on something, we’d love to see what you’ve built - feel free to include a URL 👀"
+      },
+      "validations": {
+        "required": false
+      },
+      "type": "long_text"
+    },
+    {
+      "id": "F7JAYHn1IANj",
+      "title": "Do you agree to the Alpha Fellowship Terms of Service & Privacy Policy?",
+      "ref": "7b211876-1864-4987-995c-2327af9b5d07",
+      "properties": {
+        "choices": [
+          {
+            "id": "Usxrm3njnEId",
+            "ref": "e5d82fa0-bb1e-4462-a8dd-2bf35595266d",
+            "label": "Yes, I have read and agree to the [Terms of Service & Privacy Policy](https://alpha.a16zspeedrun.com/privacy)."
+          }
+        ]
+      },
+      "validations": {
+        "required": true
+      },
+      "type": "checkbox"
+    }
+  ],
+  "logic": [
+    {
+      "type": "field",
+      "ref": "15fc8957-ebef-448a-ae55-10ad302895fd",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "b030df55-7911-4565-b25f-9ab0faf075e6"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "15fc8957-ebef-448a-ae55-10ad302895fd"
+              },
+              {
+                "type": "choice",
+                "value": "129f5b09-a27e-4a99-aeda-e8da286efca6"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "3bd17ff6-ecff-491e-a869-e8dcb290d9cb"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "3bd17ff6-ecff-491e-a869-e8dcb290d9cb",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "a9a0f8da-2721-4db7-961d-17dc0e60a59a"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "3bd17ff6-ecff-491e-a869-e8dcb290d9cb"
+              },
+              {
+                "type": "choice",
+                "value": "9b75fd19-46ea-4ba6-a2a1-b492db5d5b9b"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "2bde7632-25c0-4ad7-88f1-44fa00cf9971"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "51e0def4-5235-46ed-8112-9e5d4ca85f29",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "f7f24c77-dd63-4623-a539-f94c5761a559"
+            }
+          },
+          "condition": {
+            "op": "and",
+            "vars": [
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "0fb75d1f-4636-48e8-8104-dfc6136102c0"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "239f8033-fc38-4195-b8ee-35b679306f0b"
+                  }
+                ]
+              },
+              {
+                "op": "is",
+                "vars": [
+                  {
+                    "type": "field",
+                    "value": "0fb75d1f-4636-48e8-8104-dfc6136102c0"
+                  },
+                  {
+                    "type": "choice",
+                    "value": "8cac077b-ab2c-4c48-97ae-349a8d5edb84"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "7b211876-1864-4987-995c-2327af9b5d07"
+            }
+          },
+          "condition": {
+            "op": "always",
+            "vars": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "ref": "0fb75d1f-4636-48e8-8104-dfc6136102c0",
+      "actions": [
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "a48b891e-a14e-45cc-9269-e0fb02e6d10a"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "0fb75d1f-4636-48e8-8104-dfc6136102c0"
+              },
+              {
+                "type": "choice",
+                "value": "239f8033-fc38-4195-b8ee-35b679306f0b"
+              }
+            ]
+          }
+        },
+        {
+          "action": "jump",
+          "details": {
+            "to": {
+              "type": "field",
+              "value": "f7f24c77-dd63-4623-a539-f94c5761a559"
+            }
+          },
+          "condition": {
+            "op": "is",
+            "vars": [
+              {
+                "type": "field",
+                "value": "0fb75d1f-4636-48e8-8104-dfc6136102c0"
+              },
+              {
+                "type": "choice",
+                "value": "8cac077b-ab2c-4c48-97ae-349a8d5edb84"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "_links": {
+    "display": "https://a16zspeedrunalpha.typeform.com/to/S8YdZgSi",
+    "responses": "https://api.typeform.com/forms/S8YdZgSi/responses"
+  }
+}

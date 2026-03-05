@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r run build",
+    "dev": "pnpm --filter website run dev",
+    "test": "pnpm -r run test"
+  },
+  "packageManager": "pnpm@10.30.3",
+  "engines": {
+    "node": ">=18"
+  }
+}

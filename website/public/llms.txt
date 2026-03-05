@@ -1,0 +1,47 @@
+# Typeform Schema Extractor
+
+> An open-source tool and npm library by Roope Ripatti for extracting, visualizing, and exporting the full structure of any Typeform — every question, logic branch, and condition — so you can see the complete picture at once. Licensed under MIT.
+
+Typeform's one-question-at-a-time UI is great for short surveys but painful when you need to prepare thoughtful answers for a long application — you can't see what's coming, you can't draft responses in a separate document, and going back to review is tedious. This tool solves that by extracting the complete form structure and laying it all out at once.
+
+The project has two parts:
+
+1. **Website** — a web app where you paste any public Typeform URL and instantly get an interactive flow graph showing every question and conditional branch, plus one-click export as a Markdown table, Mermaid flowchart, or SVG.
+2. **npm package** (`typeform-extractor`) — the underlying TypeScript library that does the heavy lifting: fetches the embedded Typeform schema, builds a directed graph, and renders it in multiple formats. Zero runtime dependencies — use it in your own scripts or tools.
+
+How it works:
+
+- Every public Typeform URL (e.g. `https://form.typeform.com/to/XXXXX`) embeds a JSON schema in its HTML. The extractor fetches that HTML, parses out the schema, and returns a `TypeformSchema` object containing all fields, logic rules, and thank-you screens.
+- `buildGraph(schema)` converts the flat schema into a `FormGraph` — a directed graph with nodes (questions, endings) and edges (sequential flow, conditional branches, default jumps).
+- Renderers turn the graph into the output format you need:
+  - **Markdown table** — every field listed with its type, title, and choices; ideal for drafting answers in any text editor
+  - **Mermaid flowchart** — a flowchart source you can embed in docs, Notion, or GitHub READMEs
+  - **Interactive React Flow diagram** — a zoomable, pannable graph in the browser
+  - **SVG** — a rendered vector image of the flowchart (generated via Kroki)
+
+Use cases:
+
+- Preparing answers for a Typeform application by viewing all questions upfront
+- Documenting a form's structure and branching logic for a team
+- Auditing conditional logic in complex multi-branch forms
+- Embedding form flow diagrams in documentation or presentations
+
+## Docs
+
+- [npm package README](https://github.com/ripattir/typeform-question-extractor/blob/main/typeform-schema-extractor/README.md): Library API overview with install instructions, project structure, and usage examples
+- [Website README](https://github.com/ripattir/typeform-question-extractor/blob/main/website/README.md): Dev setup, scripts, routes, and project structure for the web app
+
+## API
+
+- [Type definitions](https://github.com/ripattir/typeform-question-extractor/blob/main/typeform-schema-extractor/src/types.ts): All TypeScript types — TypeformSchema, TypeformField, LogicEntry, FormGraph, GraphNode, GraphEdge, etc.
+- [Public exports](https://github.com/ripattir/typeform-question-extractor/blob/main/typeform-schema-extractor/src/index.ts): Barrel export listing every public function and type
+- [Extractor](https://github.com/ripattir/typeform-question-extractor/blob/main/typeform-schema-extractor/src/extractor.ts): `extractFormJson` and `getTypeformSchema` — HTML fetching and schema parsing
+- [Graph builder](https://github.com/ripattir/typeform-question-extractor/blob/main/typeform-schema-extractor/src/graph.ts): `buildGraph` — converts TypeformSchema to FormGraph
+- [Mermaid renderer](https://github.com/ripattir/typeform-question-extractor/blob/main/typeform-schema-extractor/src/renderers/mermaid.ts): `toMermaidSource`, `saveMermaidMd`, `saveMermaidSvg`, `getMermaidSvg`
+- [Markdown table renderer](https://github.com/ripattir/typeform-question-extractor/blob/main/typeform-schema-extractor/src/renderers/markdown-table.ts): `toMarkdownTable`, `saveMarkdownTable`
+- [React Flow renderer](https://github.com/ripattir/typeform-question-extractor/blob/main/typeform-schema-extractor/src/renderers/react-flow.ts): `saveReactFlowHtml`
+
+## Website
+
+- [Home page](https://typeform-extractor.com/): Main extractor UI — paste a Typeform URL, see the interactive graph, and export
+- [About page](https://typeform-extractor.com/about): Project motivation, features, and links

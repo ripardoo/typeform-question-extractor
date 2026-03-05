@@ -1,0 +1,50 @@
+{
+  "name": "typeform-extractor",
+  "version": "0.1.0",
+  "description": "Extract, parse, and visualise Typeform schemas as Mermaid flowcharts, React Flow graphs, or Markdown tables",
+  "license": "MIT",
+  "author": "Roope Ripatti",
+  "keywords": [
+    "typeform",
+    "schema",
+    "extractor",
+    "mermaid",
+    "react-flow",
+    "markdown",
+    "form",
+    "graph",
+    "flowchart"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rooperipatti/typeform-question-extractor.git",
+    "directory": "typeform-schema-extractor"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm run build"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@vitest/coverage-v8": "^3.2.4",
+    "typescript": "^5.7.2",
+    "vitest": "^3"
+  }
+}

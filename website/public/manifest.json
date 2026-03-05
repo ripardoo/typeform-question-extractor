@@ -1,0 +1,8 @@
+{
+  "short_name": "Typeform Extractor",
+  "name": "Typeform Schema Extractor",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0f3d3e",
+  "background_color": "#ffffff"
+}

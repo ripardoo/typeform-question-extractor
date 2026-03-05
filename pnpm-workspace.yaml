@@ -1,0 +1,6 @@
+packages:
+  - typeform-schema-extractor
+  - website
+
+onlyBuiltDependencies:
+  - esbuild
