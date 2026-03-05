@@ -1,0 +1,18 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "typeform-extractor-website",
+    "compatibility_date": "2025-01-01",
+    "compatibility_flags": [
+        "nodejs_compat"
+    ],
+    "main": "@tanstack/react-start/server-entry",
+    "observability": {
+        "enabled": true
+    },
+    "routes": [
+        {
+            "pattern": "gettypeformquestions.com",
+            "custom_domain": true
+        }
+    ]
+}

@@ -9,6 +9,7 @@
     "dev": "vite dev --port 3000",
     "build": "vite build",
     "preview": "vite preview",
+    "deploy": "pnpm run build && wrangler deploy",
     "test": "vitest run --passWithNoTests",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
@@ -33,6 +34,7 @@
     "typeform-extractor": "workspace:*"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.26.0",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/typography": "^0.5.16",
     "@tanstack/devtools-vite": "^0.5.3",
@@ -46,7 +48,8 @@
     "typescript": "^5.7.2",
     "vite": "^7.3.1",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.0.5"
+    "vitest": "^3.0.5",
+    "wrangler": "^4.70.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
